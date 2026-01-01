@@ -2,12 +2,12 @@
 VRMDB is a Python-based web scraper that extracts movie data from IMDb and stores it in CSV files for further analysis and exploration.
 
 # Features
-•	Scrapes movie details from IMDb pages using Python.
-•	Enriches data with genres, languages, directors, writers, cast, poster images, and streaming platform information.
-•	Saves raw and enhanced data into CSV files.
-•	Configurable via a central config module.
-•	Modular architecture with separate files for scraping, page parsing, and data I/O.
-•	Supports certification lookup for movies and TV titles.
+1. Scrapes movie details from IMDb pages using Python.
+2. Enriches data with genres, languages, directors, writers, cast, poster images, and streaming platform information.
+3. Saves raw and enhanced data into CSV files.
+4. Configurable via a central config module.
+5. Modular architecture with separate files for scraping, page parsing, and data I/O.
+6. Supports certification lookup for movies and TV titles.
 
 # Project Structure
 ## File / Folder	Purpose
@@ -22,27 +22,27 @@ VRMDB is a Python-based web scraper that extracts movie data from IMDb and store
 9. VRMDB.pyproj	Visual Studio Python project file.
 
 # Prerequisites
-•	Python: 3.9 or higher (64-bit) installed on Windows.
-•	Virtual Environment: Recommended for isolated dependency management.
+1. Python: 3.9 or higher (64-bit) installed on Windows.
+2. Virtual Environment: Recommended for isolated dependency management.
 
 # Required Libraries
 1. Install dependencies using pip:
 2. pip install requests beautifulsoup4 selenium lxml pandas
 
 # Key libraries:
-• requests – HTTP library for fetching IMDb pages
-•	beautifulsoup4 – HTML parsing
-•	selenium – Automated browser for JavaScript-heavy content (streaming logos)
-•	lxml – Fast XML/HTML parsing backend
-•	pandas – Data manipulation and CSV I/O
+1. requests – HTTP library for fetching IMDb pages.
+2. beautifulsoup4 – HTML parsing
+3. selenium – Automated browser for JavaScript-heavy content (streaming logos)
+4. lxml – Fast XML/HTML parsing backend
+5. pandas – Data manipulation and CSV I/O
 
 # Configuration
 ## Update config.py to control:
-•	IMDB_BASE_URL – Base URL for IMDb title pages (default: https://www.imdb.com/title/)
-•	INPUT_EXCEL_PATH – Path to input CSV file containing IMDb IDs
-•	OUTPUT_EXCEL_PATH – Path where enriched CSV will be saved
-•	IMDB_ID_COLUMN – Column name in input CSV containing IMDb IDs (default: "Const")
-•	HEADERS – Browser-like HTTP headers to avoid 403 errors
+1. IMDB_BASE_URL – Base URL for IMDb title pages (default: https://www.imdb.com/title/)
+2. INPUT_EXCEL_PATH – Path to input CSV file containing IMDb IDs
+3. OUTPUT_EXCEL_PATH – Path where enriched CSV will be saved
+4. IMDB_ID_COLUMN – Column name in input CSV containing IMDb IDs (default: "Const")
+5. HEADERS – Browser-like HTTP headers to avoid 403 errors
 
 # Example Configuration
 1. IMDB_BASE_URL = "https://www.imdb.com/title/"
@@ -57,54 +57,59 @@ VRMDB is a Python-based web scraper that extracts movie data from IMDb and store
 # Execution Flow
 1. Load Input CSV – main.py reads the base CSV with IMDb IDs from the path specified in config.py.
 2. Enrich with IMDb Data – scraper.py iterates over each IMDb ID, calling imdb_page.py to extract:
-o	Genres
-o	Languages
-o	Directors and writers
-o	Top 5 cast members
-o	Poster image URL
-o	Streaming platform logos (using Selenium)
-3.	Save Enriched Data – Results saved to *_enriched.csv with all extracted metadata.
-4.	Add Certifications – imdb_certification module fetches certification data (e.g., PG-13, R) and adds it to the final CSV.
-5.	Output Final CSV – Complete enriched dataset saved to *_final.csv.
+  1. Genres
+  2. Languages
+  3. Directors and writers
+  4. Top 5 cast members
+  5. Poster image URL
+  6. Streaming platform logos (using Selenium)
+7.	Save Enriched Data – Results saved to *_enriched.csv with all extracted metadata.
+8.	Add Certifications – imdb_certification module fetches certification data (e.g., PG-13, R) and adds it to the final CSV.
+9.	Output Final CSV – Complete enriched dataset saved to *_final.csv.
 
 The entire process includes polite delays (2–5 second gaps) between requests to respect IMDb's server load and terms of service.
 
 # Output Files
 The script generates multiple CSV files:
+
 *_enriched.csv	Base dataset + genres, languages, directors, writers, cast, posters, streaming info
+
 *_final.csv	Enhanced data + certification ratings (G, PG, PG-13, R, etc.)
 
 Each row corresponds to one IMDb title with all extracted metadata in separate columns.
 
 # Platform
 This project was scripted and executed on:
-•	Operating System: Windows 10/11
-•	IDE: Microsoft Visual Studio 2022 with Python workload enabled, using a .pyproj-based Python project file
-•	Python Runtime: Python 3.9+ (64-bit) configured as the default interpreter within Visual Studio
-•	Development Environment: Multi-monitor setup with simultaneous web scraping and data inspection tasks
+1. Operating System: Windows 10/11
+2. IDE: Microsoft Visual Studio 2022 with Python workload enabled, using a .pyproj-based Python project file
+3. Python Runtime: Python 3.9+ (64-bit) configured as the default interpreter within Visual Studio
+4. Development Environment: Multi-monitor setup with simultaneous web scraping and data inspection tasks
 The scripts can also run from the Windows command line or any other IDE as long as a compatible Python 3.9+ environment is available.
 
 # Future Enhancements
-•	Add comprehensive logging for monitoring long scraping runs
-•	Implement exponential backoff and circuit breaker pattern for network resilience
-•	Parameterize date-based filenames instead of hardcoding (e.g., {date}_enriched.csv)
-•	Add unit tests and integration tests for imdb_page.py selectors
-•	Support for batch processing and multi-threading to accelerate large datasets
-•	Database storage option (SQLite, PostgreSQL) as alternative to CSV
+1. Add comprehensive logging for monitoring long scraping runs
+2. Implement exponential backoff and circuit breaker pattern for network resilience
+3. Parameterize date-based filenames instead of hardcoding (e.g., {date}_enriched.csv)
+4. Add unit tests and integration tests for imdb_page.py selectors
+5. Support for batch processing and multi-threading to accelerate large datasets
+6. Database storage option (SQLite, PostgreSQL) as alternative to CSV
 
 # Troubleshooting
 403 Forbidden errors:
-•	The script includes browser-like headers and retry logic. If still blocked, add delays between requests in config.py or use a proxy.
+  The script includes browser-like headers and retry logic. If still blocked, add delays between requests in config.py or use a proxy.
+  
 Selenium Chrome driver not found:
-•	Ensure ChromeDriver is installed and in the system PATH, or specify its path explicitly in imdb_page.py.
+  Ensure ChromeDriver is installed and in the system PATH, or specify its path explicitly in imdb_page.py.
+  
 Timeout errors:
-•	Increase the timeout value in ImdbTitlePage.fetch() or adjust polite delay intervals in scraper.py.
+  Increase the timeout value in ImdbTitlePage.fetch() or adjust polite delay intervals in scraper.py.
+  
 Missing data in output:
-•	Check that IMDb page selectors in imdb_page.py (XPath, CSS classes) are still valid; IMDb updates its HTML structure periodically.
+  Check that IMDb page selectors in imdb_page.py (XPath, CSS classes) are still valid; IMDb updates its HTML structure periodically.
 
 # References
-•	IMDb Official Website: https://www.imdb.com
-•	BeautifulSoup Documentation: https://www.crummy.com/software/BeautifulSoup/
-•	Selenium Documentation: https://selenium.dev/documentation/
-•	Requests Documentation: https://requests.readthedocs.io/
+1. IMDb Official Website: https://www.imdb.com
+2. BeautifulSoup Documentation: https://www.crummy.com/software/BeautifulSoup/
+3. Selenium Documentation: https://selenium.dev/documentation/
+4. Requests Documentation: https://requests.readthedocs.io/
 
