@@ -1,0 +1,50 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>487a0717-d148-4fb3-a880-b34c15259fe9</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>imdb_framework\main.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>VRMDB</Name>
+    <RootNamespace>VRMDB</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="imdb_framework\" />
+    <Folder Include="imdb_framework\Data\" />
+    <Folder Include="imdb_framework\pages\" />
+    <Folder Include="imdb_Certification\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="imdb_framework\config.py" />
+    <Compile Include="imdb_framework\data_io.py" />
+    <Compile Include="imdb_framework\main.py" />
+    <Compile Include="imdb_Certification\imdb_certification.py" />
+    <Compile Include="imdb_framework\pages\imdb_page.py" />
+    <Compile Include="imdb_framework\pages\__init__.py" />
+    <Compile Include="imdb_framework\scraper.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="imdb_framework\Data\31-12-2025.csv" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
