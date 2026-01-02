@@ -3,8 +3,8 @@
 IMDB_BASE_URL = "https://www.imdb.com/title/"
 
 # File paths
-INPUT_EXCEL_PATH = r"D:\Users\ADMIN\source\repos\VRMDB\VRMDB\imdb_framework\Data\31-12-2025.csv"
-OUTPUT_EXCEL_PATH = r"D:\Users\ADMIN\source\repos\VRMDB\VRMDB\imdb_framework\Data\Enhanced_31-12-2025.csv"
+INPUT_EXCEL_PATH = r"C:\Users\vishw\source\repos\VR_MovieDataBase\VRMDB\imdb_framework\Data\31-12-2025.csv"
+OUTPUT_EXCEL_PATH = r"C:\Users\vishw\source\repos\VR_MovieDataBase\VRMDB\imdb_framework\Data\Enhanced_31-12-2025.csv"
 
 # Column name in your Excel
 IMDB_ID_COLUMN = "Const"
