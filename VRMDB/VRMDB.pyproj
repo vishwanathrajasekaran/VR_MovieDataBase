@@ -36,6 +36,7 @@
     <Compile Include="imdb_framework\scraper.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="imdb_framework\Data\07-03-2026.csv" />
     <Content Include="imdb_framework\Data\31-12-2025.csv" />
   </ItemGroup>
   <ItemGroup>
