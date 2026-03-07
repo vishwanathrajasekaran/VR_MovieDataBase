@@ -26,13 +26,11 @@
     <Folder Include="imdb_framework\" />
     <Folder Include="imdb_framework\Data\" />
     <Folder Include="imdb_framework\pages\" />
-    <Folder Include="imdb_Certification\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="imdb_framework\config.py" />
     <Compile Include="imdb_framework\data_io.py" />
     <Compile Include="imdb_framework\main.py" />
-    <Compile Include="imdb_Certification\imdb_certification.py" />
     <Compile Include="imdb_framework\pages\imdb_page.py" />
     <Compile Include="imdb_framework\pages\__init__.py" />
     <Compile Include="imdb_framework\scraper.py" />
