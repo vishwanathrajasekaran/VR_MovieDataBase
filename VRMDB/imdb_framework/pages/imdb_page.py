@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import time
 
 BASE_URL = "https://www.imdb.com/title/"
 
@@ -247,15 +248,17 @@ class ImdbTitlePage:
 
         try:
 
-            element = WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located(
-                (By.XPATH, "//*[@data-testid='hero-subnav-bar-series-episode-count']")
+            time.sleep(2)
+
+            element = WebDriverWait(self.driver, 15).until(
+                EC.presence_of_element_located(
+                    (By.XPATH, "//*[@data-testid='hero-subnav-bar-series-episode-count']")
+                )
             )
-        )
 
             text = element.text.strip()
 
-            # Example: "1129 Episodes"
+            # Example: "1,129 Episodes"
             count = text.split()[0].replace(",", "")
 
             return count
