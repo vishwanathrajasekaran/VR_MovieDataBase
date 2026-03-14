@@ -17,6 +17,7 @@ LOGO_XPATH = (
 ROW_ICON_XPATH = '//div[@data-testid="tm-box-update-row"]//img'
 
 
+
 class ImdbTitlePage:
 
     def __init__(self, imdb_id: str, driver):
@@ -235,6 +236,29 @@ class ImdbTitlePage:
                     srcs.append(src)
 
             return " | ".join(srcs)
+
+        except:
+            return ""
+
+    # -----------------------
+    # Episodes (for TV shows)
+    # -----------------------
+    def get_episode_count(self):
+
+        try:
+
+            element = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(
+                (By.XPATH, "//*[@data-testid='hero-subnav-bar-series-episode-count']")
+            )
+        )
+
+            text = element.text.strip()
+
+            # Example: "1129 Episodes"
+            count = text.split()[0].replace(",", "")
+
+            return count
 
         except:
             return ""

@@ -18,6 +18,7 @@ ACTIVE_FIELDS = {
     "Cast": lambda page: page.get_cast(top_n=5),
     "Poster": lambda page: page.get_poster_url(),
     "Plot": lambda page: page.get_plot_summary(),
+    "Episodes": lambda page: page.get_episode_count(),
 }
 
 
@@ -130,6 +131,7 @@ def enrich_dataframe(df: pd.DataFrame, driver) -> pd.DataFrame:
             f"Languages: {col_values['Languages'][-1]}\n"
             f"Directors: {col_values['Directors'][-1]}\n"
             f"Certification: {certifications[-1]}\n"
+            f"Episodes: {col_values['Episodes'][-1]}\n"
             f"StreamingLogo: {'Yes' if logo_url else 'No'}\n"
             f"Elapsed: {elapsed_str} | ETA: {remaining_str}"
         )
